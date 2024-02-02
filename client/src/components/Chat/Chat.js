@@ -18,7 +18,7 @@ const Chat = () => {
 		const [messageList, setMessageList] = useState([]);
 		const [users, setUsers] = useState('');
 	
-    const ENDPOINT = 'http://localhost:3001';
+    const ENDPOINT = 'mongodb+srv://catttjyl:onwCoXzzsposv5RM@cluster0.pmy96up.mongodb.net/?retryWrites=true&w=majority';
   
     const location = useLocation();
     

@@ -5,6 +5,7 @@ const { Server } = require('socket.io');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const router = require('./router');
+const colors = require('colors');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
 
@@ -22,10 +23,10 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("DB Connetion Successfull");
+    console.log("DB Connetion Successfull".cyan.underline);
   })
   .catch((err) => {
-    console.log(err.message);
+    console.log(`Error: ${err.message}`.red.bold);
 });
 
 
@@ -72,6 +73,6 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`server running at http://localhost:${PORT}`);
+  console.log(`server running at http://localhost:${PORT}`.yellow.bold);
 });
   
