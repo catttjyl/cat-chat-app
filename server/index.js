@@ -3,17 +3,29 @@ const { createServer } = require('node:http');
 const { join } = require('node:path');
 const { Server } = require('socket.io');
 const cors = require("cors");
+const mongoose = require("mongoose");
+const router = require('./router');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
-
-const PORT = process.env.PORT || 3001;
-
-const router = require('./router');
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
+});
+
+require("dotenv").config();
+const PORT = process.env.PORT || 3001;
+
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB Connetion Successfull");
+  })
+  .catch((err) => {
+    console.log(err.message);
 });
 
 
