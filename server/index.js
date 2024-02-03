@@ -12,7 +12,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
+  cors: { origin: "https://pixel-chatroom.netlify.app", methods: ["GET", "POST"] },
 });
 
 require("dotenv").config();
