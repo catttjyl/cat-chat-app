@@ -6,6 +6,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const router = require('./router');
 const colors = require('colors');
+const authRoutes = require("./routes/auth");
+
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
 
@@ -19,23 +21,26 @@ const io = new Server(server, {
     methods: ["GET", "POST"] },
   });
   
-// require("dotenv").config();
+require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
-// mongoose.connect(process.env.MONGO_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("DB Connetion Successfull".cyan.underline);
-//   })
-//   .catch((err) => {
-//     console.log(`Error: ${err.message}`.red.bold);
-// });
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("DB Connetion Successfull".cyan.underline);
+  })
+  .catch((err) => {
+    console.log(`Error: ${err.message}`.red.bold);
+});
 
 
-app.use(router);
+// app.use(router);
 app.use(cors());
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 io.on('connection', (socket) => {
   console.log('New client connected.');
