@@ -18,8 +18,9 @@ const Chat = () => {
 		const [messageList, setMessageList] = useState([]);
 		const [users, setUsers] = useState('');
 	
-    const ENDPOINT = 'https://socket-chat-room-3b358c565e5d.herokuapp.com/';
-  
+    // const ENDPOINT = 'https://socket-chat-room-3b358c565e5d.herokuapp.com/';
+    const ENDPOINT = 'http://localhost:3001';
+	
     const location = useLocation();
     
     useEffect(() => {

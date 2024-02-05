@@ -11,23 +11,27 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
 
 const app = express();
 const server = createServer(app);
+// const io = new Server(server, {
+//   cors: { origin: "https://pixel-chatroom.netlify.app", methods: ["GET", "POST"] },
+// });
 const io = new Server(server, {
-  cors: { origin: "https://pixel-chatroom.netlify.app", methods: ["GET", "POST"] },
-});
-
-require("dotenv").config();
+    cors: { origin: "http://localhost:3000", 
+    methods: ["GET", "POST"] },
+  });
+  
+// require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB Connetion Successfull".cyan.underline);
-  })
-  .catch((err) => {
-    console.log(`Error: ${err.message}`.red.bold);
-});
+// mongoose.connect(process.env.MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     console.log("DB Connetion Successfull".cyan.underline);
+//   })
+//   .catch((err) => {
+//     console.log(`Error: ${err.message}`.red.bold);
+// });
 
 
 app.use(router);
