@@ -1,21 +1,23 @@
 const express = require('express');
 const { createServer } = require('node:http');
-const { join } = require('node:path');
 const { Server } = require('socket.io');
 const cors = require("cors");
 const mongoose = require("mongoose");
-const router = require('./router');
 const colors = require('colors');
+const router = require('./router');
 const authRoutes = require("./routes/auth");
-
-
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./user');
+const messageRoutes = require("./routes/messages");
 
 const app = express();
 const server = createServer(app);
-// const io = new Server(server, {
-//   cors: { origin: "https://pixel-chatroom.netlify.app", methods: ["GET", "POST"] },
-// });
+
+app.use(router);
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
+
 const io = new Server(server, {
     cors: { origin: "http://localhost:3000", 
     methods: ["GET", "POST"] },
@@ -35,50 +37,20 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log(`Error: ${err.message}`.red.bold);
 });
 
-
-// app.use(router);
-app.use(cors());
-app.use(express.json());
-
-app.use("/api/auth", authRoutes);
-
-io.on('connection', (socket) => {
-  console.log('New client connected.');
-
-	socket.on('join', ({ name, room }, callback) => {
-		console.log("room:",room,"name",name);
-    const { error, user } = addUser({ id: socket.id, name, room });
-
-    if(error) return callback(error);
-
-    socket.join(user.room);
-
-    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!`});
-
-    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
-
-    callback();
+global.onlineUsers = new Map();
+io.on("connection", (socket) => {
+  console.log("New connection");
+  global.chatSocket = socket;
+  socket.on("add-user", (userId) => {
+    onlineUsers.set(userId, socket.id);
   });
 
-	socket.on('sendMessage', (message, callback) => {
-    const user = getUser(socket.id);
-
-    io.to(user.room).emit('message', { user: user.name, text: message });
-		io.to(user.room).emit('roomData', { room: user.room, text: message });
-
-    callback();
-  });
-
-	socket.on('disconnect', () => {
-		console.log('Client disconnected');
-    const user = removeUser(socket.id);
-
-    if(user) {
-      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
-      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
+  socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("msg-recieve", data.msg);
     }
-  })
+  });
 });
 
 server.listen(PORT, () => {

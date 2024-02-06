@@ -1,85 +1,68 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
-import io from "socket.io-client";
-import InfoBar from "../../components/InfoBar/InfoBar";
-import Input from "../../components/Input/Input";
-import Messages from "../../components/Messages/Messages";
-import TextContainer from "../../components/TextContainer/TextContainer";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { io } from "socket.io-client";
+import { allUsersRoute, host } from "../../utils/APIRoutes";
+import ChatContainer from "../../components/ChatContainer/ChatContainer";
+import Contacts from "../../components/Contacts/Contacts";
+import Welcome from "../../components/Welcome/Welcome";
 
-import './Chat.css';
-
-let socket;
+import "./Chat.css";
 
 const Chat = () => {
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
-		const [message, setMessage] = useState('');
-		const [messageList, setMessageList] = useState([]);
-		const [users, setUsers] = useState('');
-	
-    // const ENDPOINT = 'https://socket-chat-room-3b358c565e5d.herokuapp.com/';
-    const ENDPOINT = 'http://localhost:3001';
-	
-    const location = useLocation();
-    
-    useEffect(() => {
-			const { name, room } = queryString.parse(location.search);
-
-			// console.log(location.search);
-			// console.log(name,room);
-
-			socket = io(ENDPOINT);
-			console.log(socket);
-
-			setRoom(room);
-			setName(name)
-
-			socket.emit('join', { name, room }, (error) => {
-			//   if(error) {
-			//     alert(error);
-			//   }
-			});
-		}, [ENDPOINT, location.search]);
-
-		useEffect(() => {
-			socket.on('message', message => {
-				setMessageList(messageList => [ ...messageList, message ]);
-			});
-			
-			socket.on("roomData", ({ users }) => {
-				setUsers(users);
-			});
-		}, [messageList]);
-	
-		const sendMessage = (event) => {
-			if (event) event.preventDefault();
-	
-			if(message) {
-				socket.emit('sendMessage', message, () => setMessage(''));
+  const navigate = useNavigate();
+  const socket = useRef();
+  const [contacts, setContacts] = useState([]);
+  const [currentChat, setCurrentChat] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  useEffect(() => {
+		async function fetchData() {
+			if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+				navigate("/login");
+			} else {
+				setCurrentUser(
+					await JSON.parse(
+					localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+					)
+				);
 			}
 		}
+		fetchData();
+  }, [navigate]);
 
-		console.log(message, messageList);
+  useEffect(() => {
+    if (currentUser) {
+      socket.current = io(host);
+      socket.current.emit("add-user", currentUser._id);
+    }
+  }, [currentUser]);
 
-    return (
-      <div className="outerContainer">
-				<div className="container">
-						<InfoBar room={room} />
-						<Messages messageList={messageList} name={name} />
-						<Input 
-							message={message} 
-							setMessage={setMessage} 
-							sendMessage={sendMessage} />
-						{/* <input
-							value={message}
-							onChange={(event)=>setMessage(event.target.value)}
-							onKeyDown={(event)=> event.key === 'Enter' ? sendMessage(event) : null}
-						/> */}
-				</div>
-				<TextContainer users={users}/>
+  useEffect(() => {
+		async function fetchData() {
+			if (currentUser) {
+				const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+				setContacts(data.data);
+			}
+		}
+    fetchData();
+  }, [currentUser]);
+
+  const handleChatChange = (chat) => {
+    setCurrentChat(chat);
+  };
+
+  return (
+		<div className="chat">
+			<div className="contain-box">
+				<Contacts contacts={contacts} changeChat={handleChatChange} />
+				{currentChat === undefined ? (
+					<Welcome />
+				) : (
+					<ChatContainer currentChat={currentChat} socket={socket} />
+				)}
 			</div>
-    );
-};
+		</div>
+  );
+}
 
 export default Chat;

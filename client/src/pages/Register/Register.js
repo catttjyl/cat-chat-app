@@ -18,8 +18,8 @@ const Register = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-    if (localStorage.getItem("cat-chat-app")) {
-      navigate("/chat");
+    if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+      navigate("/");
     }
   }, []);
 	
@@ -44,10 +44,10 @@ const Register = () => {
       }
       if (data.status === true) {
         localStorage.setItem(
-          "cat-chat-app",
+          process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(data.user)
         );
-        navigate("/chat");
+        navigate("/");
       }
     }
 	}

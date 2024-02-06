@@ -16,10 +16,10 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-    if (localStorage.getItem("cat-chat-app")) {
-      navigate("/chat");
-    }
-  }, []);
+		if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+		navigate("/");
+		}
+	}, []);
 
 	const handleChange = (event) => {
 		setValues({ ...values, [event.target.name]: event.target.value });
@@ -41,10 +41,10 @@ const Login = () => {
       }
       if (data.status === true) {
         localStorage.setItem(
-          "cat-chat-app",
+          process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(data.user)
         );
-        navigate("/chat");
+        navigate("/");
       }
     }
 	}
@@ -61,7 +61,7 @@ const Login = () => {
 
 	return (
 		<>
-	<div className="form-container">
+	<div className="FormContainer">
 		<form action="" onSubmit={(event) => handleSubmit(event)}>
 			<div className="brand">
 				<h1>Cat Chat</h1>
