@@ -1,4 +1,5 @@
-export const host = "https://cat-chat-app-6200e8e38a91.herokuapp.com/";
+export const host = "https://chat-app-local-50b3342ce0bd.herokuapp.com/";
+// export const host = "http://localhost:3001";
 export const loginRoute = `${host}/api/auth/login`;
 export const registerRoute = `${host}/api/auth/register`;
 export const logoutRoute = `${host}/api/auth/logout`;

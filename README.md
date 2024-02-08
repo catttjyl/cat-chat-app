@@ -1,6 +1,6 @@
-# socket-chat-room
+## CAT-chat-room
 
-## DEMO
+# :dizzy:DEMO
 
 Link to this chat application:
 

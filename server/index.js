@@ -20,6 +20,7 @@ app.use("/api/messages", messageRoutes);
 
 const io = new Server(server, {
     cors: { origin: "https://cat-chat-app.netlify.app/", 
+    // cors: { origin: "http://localhost:3000", 
     methods: ["GET", "POST"] },
   });
   
