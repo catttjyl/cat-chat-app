@@ -1,12 +1,21 @@
+@import url('https://fonts.cdnfonts.com/css/cat-cat');
+
+html, body {
+  margin: 0;
+}
+
 .FormContainer {
-  height: 100vh;
-  width: 100vw;
+  background-size: cover;
+  /* background-position: center; */
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #F7F7F7;
 }
 
 .FormContainer .brand {
@@ -16,41 +25,40 @@
   justify-content: center;
 }
 
-.FormContainer .brand img {
-  height: 5rem;
-}
-
 .FormContainer .brand h1 {
-  color: white;
+  font-family: 'Cat Cat', sans-serif;
+  font-weight: 100;
+  color: #393E46;
   text-transform: uppercase;
+  font-size: 60px;
 }
 
 .FormContainer form {
   display: flex;
   flex-direction: column;
+  align-items: center; 
   gap: 2rem;
-  background-color: #00000076;
   border-radius: 2rem;
-  padding: 5rem;
+  padding: 4rem;
 }
 
 .FormContainer form input {
-  background-color: transparent;
+  background-color: #EEEEEE;
+  width: 70%;
   padding: 1rem;
-  border: 0.1rem solid #4e0eff;
+  border: 0.1rem solid #393E46;
   border-radius: 0.4rem;
-  color: white;
-  width: 100%;
+  color: #393E46;
   font-size: 1rem;
 }
 
 .FormContainer form input:focus {
-  border: 0.1rem solid #997af0;
+  border: 0.1rem solid #393E46;
   outline: none;
 }
 
 .FormContainer form button {
-  background-color: #4e0eff;
+  background-color: #393E46;
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -59,19 +67,26 @@
   border-radius: 0.4rem;
   font-size: 1rem;
   text-transform: uppercase;
+  width: 75%;
 }
 
 .FormContainer form button:hover {
-  background-color: #4e0eff;
+  background-color: #929AAB;
 }
 
 .FormContainer span {
-  color: white;
+  color: #393E46;
   text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 .FormContainer span a {
-  color: #4e0eff;
+  color: #393E46;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.FormContainer span a:hover {
+  text-decoration: underline;
   font-weight: bold;
 }

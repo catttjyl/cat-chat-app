@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
-  background-color: #080420;
+  background-color: #f2f2f7;
 }
 
 .contact-box .brand {

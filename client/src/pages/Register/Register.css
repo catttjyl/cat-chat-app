@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/cat-cat');
+
 .form-container {
   height: 100vh;
   width: 100vw;
@@ -6,7 +8,7 @@
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #F7F7F7;
 }
 
 .form-container .brand {
@@ -21,7 +23,10 @@
 }
 
 .form-container .brand h1 {
-  color: white;
+  font-family: 'Cat Cat', sans-serif;
+  font-weight: 100;
+  font-size: 60px;
+  color: #393E46;
   text-transform: uppercase;
 }
 
@@ -29,28 +34,28 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-color: #00000076;
   border-radius: 2rem;
   padding: 3rem 5rem;
+  align-items: center;
 }
 
 .form-container form input {
-  background-color: transparent;
+  background-color: #EEEEEE;
+  width: 70%;
   padding: 1rem;
-  border: 0.1rem solid #4e0eff;
+  border: 0.1rem solid #393E46;
   border-radius: 0.4rem;
-  color: white;
-  width: 100%;
+  color: #393E46;
   font-size: 1rem;
 }
 
 .form-container form input:focus {
-  border: 0.1rem solid #997af0;
+  border: 0.1rem solid #393E46;
   outline: none;
 }
 
 .form-container form button {
-  background-color: #4e0eff;
+  background-color: #393E46;
   color: white;
   padding: 1rem 2rem;
   border: none;
@@ -59,19 +64,26 @@
   border-radius: 0.4rem;
   font-size: 1rem;
   text-transform: uppercase;
+  width: 75%;
 }
 
 .form-container form button:hover {
-  background-color: #4e0eff;
+  background-color: #393E46;
 }
 
 .form-container span {
-  color: white;
+  color: #393E46;
   text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 .form-container span a {
-  color: #4e0eff;
+  color: #393E46;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.FormContainer span a:hover {
+  text-decoration: underline;
   font-weight: bold;
 }
