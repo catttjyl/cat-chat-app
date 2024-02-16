@@ -4,6 +4,7 @@
 h3 {
   font-family: 'NEOTERIC', sans-serif;
 } */
+
 .contact-box {
   display: grid;
   grid-template-rows: 10% 75% 15%;
@@ -29,7 +30,6 @@ h3 {
   font-size: 40px;
   font-weight: 100;
   /* font-family: 'Cat Cat', sans-serif; */
-  font-family: sans-serif;
 }
 
 .contact-box .contacts {
@@ -90,6 +90,12 @@ h3 {
 .contact-box .current-user .avatar img {
   height: 4rem;
   max-inline-size: 100%;
+  background-color: white;
+  /* width: 200px;
+  height: 200px; */
+  clip-path: polygon(0% 0%, 100% 0%, 80% 90%, 70% 100%, 35% 100%, 15% 87%);
+  background-size: cover;
+  background-position: center;
 }
 
 .contact-box .current-user .username h2 {
