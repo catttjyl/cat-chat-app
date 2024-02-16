@@ -26,8 +26,8 @@ h1, h3 {
 .FormContainer .brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
   justify-content: center;
+  margin-bottom: -1rem;
 }
 
 .FormContainer .brand h1 {
@@ -35,7 +35,7 @@ h1, h3 {
   font-weight: 100;
   color: #393E46;
   text-transform: uppercase;
-  font-size: 60px;
+  font-size: 70px;
 }
 
 .FormContainer form {
@@ -49,12 +49,14 @@ h1, h3 {
 
 .FormContainer form input {
   background-color: #EEEEEE;
-  width: 70%;
+  width: 60%;
   padding: 1rem;
   border: 0.1rem solid #393E46;
   border-radius: 0.4rem;
   color: #393E46;
   font-size: 1rem;
+  font-family: 'NEOTERIC', sans-serif;
+  font-size: large;
 }
 
 .FormContainer form input:focus {
@@ -72,7 +74,8 @@ h1, h3 {
   border-radius: 0.4rem;
   font-size: 1rem;
   text-transform: uppercase;
-  width: 75%;
+  width: 65%;
+  font-family: 'NEOTERIC', sans-serif;
 }
 
 .FormContainer form button:hover {
@@ -82,7 +85,8 @@ h1, h3 {
 .FormContainer span {
   color: #393E46;
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: 'NEOTERIC', sans-serif;
+  font-weight: bolder;
 }
 
 .FormContainer span a {

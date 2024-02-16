@@ -83,13 +83,18 @@ export default function SetAvatar() {
         setIsLoading(false);
     }
     fetchData();
-  }, []);
+  }, [isLoading]);
 
   return (
     <>
       {isLoading ? (
         <div className="avatar-container">
-          <div className="cat" />
+          <div class="cat">
+            <div class="tail"><div class="sprite"></div></div>
+            <div class="feet"><div class="sprite"></div></div>
+            <div class="poptart"></div>
+            <div class="head"></div>
+          </div>
         </div>
       ) : (
         <div className="avatar-container">
@@ -117,6 +122,9 @@ export default function SetAvatar() {
           <button onClick={setProfilePicture} className="submit-btn">
             Set as Profile Picture
           </button>
+          <span onClick={()=> setIsLoading(true)}>
+            Not seeing your favourite? <a>Refresh</a>
+          </span>
           <ToastContainer />
         </div>
       )}

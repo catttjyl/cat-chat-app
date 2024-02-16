@@ -64,6 +64,8 @@ h3 {
 }
 
 .contact-box .contacts .contact .avatar img {
+  background-color: #EEEEEE;
+  border-radius: 50%;
   height: 3rem;
 }
 

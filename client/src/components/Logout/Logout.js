@@ -21,7 +21,8 @@ const Logout = ( ) => {
 
   return (
     <button className="button" onClick={handleClick}>
-      <BiPowerOff />
+      {/* <BiPowerOff /> */}
+	  X
     </button>
   );
 };

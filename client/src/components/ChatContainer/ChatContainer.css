@@ -31,6 +31,7 @@
 
 .chat-container .chat-header .user-details .username h3 {
   color: black;
+  font-size: 25px;
 }
 
 .chat-container .chat-messages {

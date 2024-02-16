@@ -61,3 +61,22 @@
 /* .avatar-container .submit-btn:hover {
     background-color: #4e0eff;
 } */
+
+.avatar-container span {
+    color: #393E46;
+    text-transform: uppercase;
+    font-family: 'NEOTERIC', sans-serif;
+    font-weight: bolder;  
+}
+
+.avatar-container  span a {
+    color: #393E46;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.avatar-container  span a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+  
