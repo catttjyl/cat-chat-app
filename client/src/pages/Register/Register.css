@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/cat-cat');
+@import url('https://fonts.cdnfonts.com/css/neoteric');
 
 .form-container {
   height: 100vh;
@@ -16,6 +17,7 @@
   align-items: center;
   gap: 1rem;
   justify-content: center;
+  margin-bottom: -1rem;
 }
 
 .form-container .brand img {
@@ -25,7 +27,7 @@
 .form-container .brand h1 {
   font-family: 'Cat Cat', sans-serif;
   font-weight: 100;
-  font-size: 60px;
+  font-size: 70px;
   color: #393E46;
   text-transform: uppercase;
 }
@@ -41,12 +43,13 @@
 
 .form-container form input {
   background-color: #EEEEEE;
-  width: 70%;
+  width: 60%;
   padding: 1rem;
   border: 0.1rem solid #393E46;
   border-radius: 0.4rem;
   color: #393E46;
-  font-size: 1rem;
+  font-size: large;
+  font-family: 'NEOTERIC', sans-serif;
 }
 
 .form-container form input:focus {
@@ -64,7 +67,8 @@
   border-radius: 0.4rem;
   font-size: 1rem;
   text-transform: uppercase;
-  width: 75%;
+  width: 65%;
+  font-family: 'NEOTERIC', sans-serif;
 }
 
 .form-container form button:hover {
@@ -74,7 +78,8 @@
 .form-container span {
   color: #393E46;
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: 'NEOTERIC', sans-serif;
+  font-weight: bolder;
 }
 
 .form-container span a {
@@ -83,7 +88,7 @@
   font-weight: bold;
 }
 
-.FormContainer span a:hover {
+.form-container span a:hover {
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: bolder;
 }

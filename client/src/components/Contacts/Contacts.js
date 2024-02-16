@@ -27,7 +27,7 @@ const Contacts = ({ contacts, changeChat }) => {
       {currentUserName && (
         <div className="contact-box">
           <div className="brand">
-            <h3>Message</h3>
+            <h3>Contact</h3>
           </div>
           <div className="contacts">
             {contacts.map((contact, index) => {
