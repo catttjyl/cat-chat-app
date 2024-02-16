@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #393E46;
   flex-direction: column;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .welcome span {
-  color: #4e0eff;
+  color: #929AAB;
 }

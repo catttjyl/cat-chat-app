@@ -40,8 +40,12 @@ const Chat = () => {
   useEffect(() => {
 		async function fetchData() {
 			if (currentUser) {
-				const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
-				setContacts(data.data);
+				if (currentUser.isAvatarImageSet) {
+				  const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+				  setContacts(data.data);
+				} else {
+				  navigate("/setAvatar");
+				}
 			}
 		}
     fetchData();

@@ -1,8 +1,15 @@
+/* @import url('https://fonts.cdnfonts.com/css/rossalina');
+@import url('https://fonts.cdnfonts.com/css/neoteric');
+
+h3 {
+  font-family: 'NEOTERIC', sans-serif;
+} */
 .contact-box {
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
-  background-color: #f2f2f7;
+  background-color: #393E46;
+  border-top-left-radius: 5px;
 }
 
 .contact-box .brand {
@@ -19,6 +26,10 @@
 .contact-box .brand h3 {
   color: white;
   text-transform: uppercase;
+  font-size: 40px;
+  font-weight: 100;
+  /* font-family: 'Cat Cat', sans-serif; */
+  font-family: sans-serif;
 }
 
 .contact-box .contacts {
@@ -59,13 +70,17 @@
 .contact-box .contacts .contact .username h3 {
   color: white;
 }
+.contact-box .contacts .contact.selected .username h3{
+  color: black;
+}
+
 
 .contact-box .contacts .contact.selected {
-  background-color: #9a86f3;
+  background-color: #EEEEEE;
 }
 
 .contact-box .current-user {
-  background-color: #0d0d30;
+  background-color: #B4B4B8;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -20,7 +20,7 @@ const Welcome = () => {
   return (
     <div className="welcome">
       <h1>
-        Welcome, <span>{userName}!</span>
+        Welcome, <span>{userName}</span>!
       </h1>
       <h3>Please select a chat to Start messaging.</h3>
     </div>

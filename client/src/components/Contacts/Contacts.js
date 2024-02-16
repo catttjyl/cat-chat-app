@@ -4,7 +4,7 @@ import './Contacts.css';
 
 const Contacts = ({ contacts, changeChat }) => {
   const [currentUserName, setCurrentUserName] = useState(undefined);
-  // const [currentUserImage, setCurrentUserImage] = useState(undefined);
+  const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
   useEffect(() => {
     async function fetchData() {
@@ -12,7 +12,7 @@ const Contacts = ({ contacts, changeChat }) => {
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       );
       setCurrentUserName(data.username);
-      // setCurrentUserImage(data.avatarImage);
+      setCurrentUserImage(data.avatarImage);
     }
     fetchData();
   }, []);
@@ -27,7 +27,7 @@ const Contacts = ({ contacts, changeChat }) => {
       {currentUserName && (
         <div className="contact-box">
           <div className="brand">
-            <h3>Cat Chat</h3>
+            <h3>Message</h3>
           </div>
           <div className="contacts">
             {contacts.map((contact, index) => {
@@ -54,10 +54,10 @@ const Contacts = ({ contacts, changeChat }) => {
           </div>
           <div className="current-user">
             <div className="avatar">
-              {/* <img
+              <img
                 src={`data:image/svg+xml;base64,${currentUserImage}`}
                 alt="avatar"
-              /> */}
+              />
             </div>
             <div className="username">
               <h2>{currentUserName}</h2>

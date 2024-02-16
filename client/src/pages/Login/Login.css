@@ -1,7 +1,12 @@
 @import url('https://fonts.cdnfonts.com/css/cat-cat');
+@import url('https://fonts.cdnfonts.com/css/neoteric');
 
 html, body {
   margin: 0;
+}
+
+h1, h3 {
+  font-family: 'NEOTERIC', sans-serif;
 }
 
 .FormContainer {
