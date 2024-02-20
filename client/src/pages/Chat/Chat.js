@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { allUsersRoute, host } from "../../utils/APIRoutes";
+import InfoBar from "../../components/InfoBar/InfoBar";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import Contacts from "../../components/Contacts/Contacts";
 import Welcome from "../../components/Welcome/Welcome";
@@ -58,6 +59,7 @@ const Chat = () => {
   return (
 		<div className="chat">
 			<div className="contain-box">
+				<InfoBar/>
 				<Contacts contacts={contacts} changeChat={handleChatChange} />
 				{currentChat === undefined ? (
 					<Welcome />

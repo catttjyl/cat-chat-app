@@ -1,0 +1,40 @@
+/* @import url('https://fonts.cdnfonts.com/css/cat-cat'); */
+
+.info-containter {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #B4B4B8;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.info-containter .avatar-img {
+    width: 95%;
+    margin-top: 15%;
+    background-color: white;
+    clip-path: polygon(15% 0%, 90% 0%, 95% 30%, 80% 75%, 60% 100%, 35% 100%, 15% 70%, 6% 30%);
+    clip-path: polygon(10% 0%, 90% 0%, 90% 30%, 80% 80%, 65% 100%, 35% 100%, 15% 80%, 6% 30%);
+    border: transparent;
+    cursor: pointer;
+}
+
+.info-containter .setting{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* padding: 1rem; */
+    /* border-radius: 0.5rem; */
+    margin-bottom: 15%;
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    cursor: pointer;
+    /* font-size: 30px; */
+  }
+
+.info-containter .feedback-button {
+    border: none;
+}
+  

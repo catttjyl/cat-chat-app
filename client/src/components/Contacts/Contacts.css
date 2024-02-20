@@ -1,28 +1,126 @@
 /* @import url('https://fonts.cdnfonts.com/css/rossalina');
-@import url('https://fonts.cdnfonts.com/css/neoteric');
 
 h3 {
   font-family: 'NEOTERIC', sans-serif;
 } */
+@import url('https://fonts.cdnfonts.com/css/neoteric');
 
 .contact-box {
   display: grid;
-  grid-template-rows: 10% 75% 15%;
+  grid-template-rows: 10% 88%;
   overflow: hidden;
   background-color: #393E46;
-  border-top-left-radius: 5px;
 }
 
 .contact-box .brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 4%;
 }
 
-.contact-box .brand img {
-  height: 2rem;
+.contact-box .brand svg {
+  width: 25px;
+  height:25px;
+  background-color:white;
+  border-radius:5px
 }
+
+.contact-box .brand .search {
+  border: none;
+  background-color: transparent;
+  margin-left: 5%;
+}
+
+/* .contact-box .brand .search {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+} */
+
+.contact-box .brand .search .search-icon {
+  z-index: 99;
+}
+
+.contact-box .brand .search .search__close {
+  right: 0;
+  fill: white;
+  transition: 500ms fill ease-in;
+}
+
+@keyframes slideInRightToLeft {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80%; /* Target width */
+    opacity: 1;
+  }
+}
+
+.contact-box .brand .search-open {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  /* width: 80%; */
+  background-color: white;
+  /* transition: 0.5s width ease-in-out; */
+  animation: slideInRightToLeft 0.5s forwards;
+}
+
+.contact-box .brand .search-open input {
+  width: 95%;
+  border: none;
+  font-size: 17px;
+  font-family: 'NEOTERIC', sans-serif;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.contact-box .brand .search-open input:focus {
+  outline: none;
+}
+
+.contact-box .brand .search-open .dropdown {
+  position: absolute;
+  /* top: '100%';
+  left: 0;
+  right: 0;
+  zIndex: 1;
+   */
+  line-height: 0;
+  width: 10rem;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #fff;
+}
+
+.contact-box .brand .search-open .dropdown .item {
+  padding: 5px;
+  cursor: pointer;
+}
+.contact-box .brand .search-open .dropdown .item:hover {
+  background-color: rgb(146, 154, 171, 0.5);
+}
+
+
+.contact-box .brand .search.search-open svg.search__close {
+  fill: #cccccc; /* Replace with the value of $clr-gray400 */
+}
+
+
+.contact-box .brand .add-group {
+  border: none;
+  background-color: transparent;
+}
+
 
 .contact-box .brand h3 {
   color: white;
