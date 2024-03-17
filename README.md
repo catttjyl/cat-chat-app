@@ -4,4 +4,4 @@
 
 Link to this chat application:
 
-- [CatChat](https://cat-chat-app.netlify.app/)
+- [CatChat](https://chat-app-cat.netlify.app/)
